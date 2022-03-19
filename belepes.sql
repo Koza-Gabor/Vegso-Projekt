@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Már 18. 01:29
+-- Létrehozás ideje: 2022. Már 19. 22:20
 -- Kiszolgáló verziója: 10.4.17-MariaDB
 -- PHP verzió: 8.0.1
 
@@ -29,13 +29,14 @@ USE `belepes`;
 -- Tábla szerkezet ehhez a táblához `etlap`
 --
 
+DROP TABLE IF EXISTS `etlap`;
 CREATE TABLE `etlap` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `kategoria` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `nev` varchar(255) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
   `osszetetel` varchar(255) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
   `alergia` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `ar` int(255) NOT NULL
+  `ar` mediumint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
@@ -62,11 +63,12 @@ INSERT INTO `etlap` (`id`, `kategoria`, `nev`, `osszetetel`, `alergia`, `ar`) VA
 -- Tábla szerkezet ehhez a táblához `felhasznalok`
 --
 
+DROP TABLE IF EXISTS `felhasznalok`;
 CREATE TABLE `felhasznalok` (
-  `id` int(11) NOT NULL,
+  `id` smallint(11) UNSIGNED NOT NULL,
   `nev` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `kod` varchar(16) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `jog` varchar(50) COLLATE utf8mb4_hungarian_ci DEFAULT 'user'
+  `jog` varchar(50) COLLATE utf8mb4_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
@@ -102,13 +104,13 @@ ALTER TABLE `felhasznalok`
 -- AUTO_INCREMENT a táblához `etlap`
 --
 ALTER TABLE `etlap`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` smallint(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
