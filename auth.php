@@ -9,8 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 $noAuthResources = [
     'GET' => ['etlap'],
     'POST' => ['felhasznalok=login'],
-    'PATCH' => [],
-    'DELETE' => []
+    'PUT' => ['etlap'],
+    'PATCH' => ['etlap'],
+    'PATCH' => ['felhasznalok'],
+    'DELETE' => ['etlap']
 ];
 
   if (in_array($_SERVER['QUERY_STRING'], $noAuthResources[$_SERVER['REQUEST_METHOD']])) {
